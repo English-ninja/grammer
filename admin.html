@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>50-Day English Mastery Course Tracker</title>
+  <!-- Google Fonts: Outfit and Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <!-- App Container -->
+  <div class="app-container">
+    
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#logo-grad)" stroke="var(--primary-light)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="2" y1="2" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+                <stop stop-color="var(--accent-pink)"/>
+                <stop offset="1" stop-color="var(--primary)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>English Mastery</h1>
+          <span class="logo-subtitle">50-Day Complete Video Plan</span>
+        </div>
+      </div>
+      
+      <!-- Quick Info Widgets -->
+      <div class="header-widgets">
+        <div class="stat-widget streak-widget" id="streakWidget" title="Days active streak">
+          <span class="widget-icon">🔥</span>
+          <div class="widget-info">
+            <span class="widget-value" id="streakCount">0</span>
+            <span class="widget-label">Day Streak</span>
+          </div>
+        </div>
+        <div class="stat-widget rate-widget" id="avgConfidenceWidget" title="Average confidence across rated days">
+          <span class="widget-icon">⭐</span>
+          <div class="widget-info">
+            <span class="widget-value" id="avgConfidence">0%</span>
+            <span class="widget-label">Avg Confidence</span>
+          </div>
+        </div>
+        <div class="theme-toggle-area">
+          <button id="resetDataBtn" class="btn btn-icon-only btn-secondary" title="Reset all progress data">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M16 3h5v5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 21H3v-5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Section -->
+    <section class="dashboard-section">
+      
+      <!-- Primary Progress Metric (Large Card) -->
+      <div class="dashboard-card main-progress-card">
+        <div class="card-glow"></div>
+        <div class="progress-details">
+          <h2>Your Course Progress</h2>
+          <p class="progress-subtext">Grammar (Days 1–34) &bull; Speaking & Fluency (Days 35–50)</p>
+          
+          <div class="completion-metrics">
+            <div class="metric-big">
+              <span class="metric-number" id="overallPercent">0%</span>
+              <span class="metric-label">Completed</span>
+            </div>
+            <div class="metric-fractions" id="overallFraction">
+              0 / 50 Days Complete
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="overallProgressBar" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Breakdowns -->
+      <div class="dashboard-card phase-card" id="grammarPhaseCard">
+        <div class="phase-header">
+          <div class="phase-title-wrapper">
+            <span class="phase-badge badge-grammar">PHASE 1</span>
+            <h3>Grammar Mastery</h3>
+          </div>
+          <span class="phase-days-count" id="grammarCountText">0/34 Days</span>
+        </div>
+        <div class="phase-progress-row">
+          <div class="progress-circle-container">
+            <svg class="progress-ring" width="60" height="60">
+              <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="6" fill="transparent" r="24" cx="30" cy="30" />
+              <circle class="progress-ring-circle" id="grammarProgressRing" stroke="var(--primary)" stroke-width="6" stroke-dasharray="150.79" stroke-dashoffset="150.79" stroke-linecap="round" fill="transparent" r="24" cx="30" cy="30" />
+            </svg>
+            <span class="progress-ring-label" id="grammarPercent">0%</span>
+          </div>
+          <p class="phase-desc">Build a rock-solid foundation, including causatives, conditionals, subjunctives, and error correction.</p>
+        </div>
+      </div>
+
+      <div class="dashboard-card phase-card" id="speakingPhaseCard">
+        <div class="phase-header">
+          <div class="phase-title-wrapper">
+            <span class="phase-badge badge-speaking">PHASE 2</span>
+            <h3>Speaking & Fluency</h3>
+          </div>
+          <span class="phase-days-count" id="speakingCountText">0/16 Days</span>
+        </div>
+        <div class="phase-progress-row">
+          <div class="progress-circle-container">
+            <svg class="progress-ring" width="60" height="60">
+              <circle class="progress-ring-circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="6" fill="transparent" r="24" cx="30" cy="30" />
+              <circle class="progress-ring-circle" id="speakingProgressRing" stroke="var(--accent-pink)" stroke-width="6" stroke-dasharray="150.79" stroke-dashoffset="150.79" stroke-linecap="round" fill="transparent" r="24" cx="30" cy="30" />
+            </svg>
+            <span class="progress-ring-label" id="speakingPercent">0%</span>
+          </div>
+          <p class="phase-desc">Develop native rhythm, stress, intonation, functional conversation habits, and public speaking skills.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Filters & Search Toolbar -->
+    <section class="controls-toolbar">
+      <div class="search-box">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search topics, homework, or days..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-btn" style="display:none;">&times;</button>
+      </div>
+
+      <div class="filter-group-container">
+        <!-- Phase Tabs -->
+        <div class="tab-filters" id="phaseFilter">
+          <button class="tab-btn active" data-filter="all">All Plan</button>
+          <button class="tab-btn" data-filter="grammar">Grammar</button>
+          <button class="tab-btn" data-filter="speaking">Speaking</button>
+        </div>
+
+        <!-- Dropdowns for Weeks and Statuses -->
+        <div class="select-filters">
+          <div class="select-wrapper">
+            <select id="weekSelect">
+              <option value="all">All Weeks</option>
+              <option value="1">Week 1 (Foundations)</option>
+              <option value="2">Week 2 (Tenses & Transformations)</option>
+              <option value="3">Week 3 (Advanced Structures)</option>
+              <option value="4">Week 4 (Refinement & Mastery)</option>
+              <option value="5">Week 5 (Sounds & Connected Speech)</option>
+              <option value="6">Week 6 (Fluency & Contexts)</option>
+              <option value="7">Week 7 (Storytelling & Opinions)</option>
+              <option value="8">Week 8 (Capstone)</option>
+            </select>
+          </div>
+
+          <div class="select-wrapper">
+            <select id="statusSelect">
+              <option value="all">All Days</option>
+              <option value="completed">Completed Only</option>
+              <option value="incomplete">Incomplete Only</option>
+              <option value="new">🆕 Added Topics</option>
+              <option value="starred">⭐ High Rated (4-5★)</option>
+              <option value="low-confidence">⚠️ Low Rated (1-2★)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid of Daily Cards -->
+    <main class="grid-section">
+      <div class="grid-header">
+        <h2 id="gridTitle">Course Schedule</h2>
+        <span class="results-count" id="resultsCount">50 days shown</span>
+      </div>
+      
+      <div class="cards-grid" id="cardsGrid">
+        <!-- JS generates cards here -->
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading course modules...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="app-footer">
+      <p>50-Day Complete English Mastery Course &bull; Designed to elevate from Grammar to Speaking Fluency.</p>
+      <p class="footer-links">
+        <a href="#" id="viewSyllabusPdf">View Original markdown file</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Day Detail Modal / Drawer (Sliding Panel) -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-container">
+      
+      <!-- Modal Header -->
+      <header class="modal-header">
+        <div class="modal-meta-info">
+          <span class="modal-week" id="modalWeek">WEEK 1</span>
+          <span class="phase-badge" id="modalPhaseBadge">GRAMMAR</span>
+          <span class="new-tag" id="modalNewBadge" style="display: none;">NEW</span>
+        </div>
+        <div class="modal-title-row">
+          <h2 id="modalTitle">Day Title Here</h2>
+          <button class="close-modal-btn" id="closeModalBtn" aria-label="Close details">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Day Complete Button in Header -->
+        <div class="modal-action-bar">
+          <button id="modalCompleteBtn" class="btn btn-primary btn-complete">
+            <span class="btn-icon">✓</span>
+            <span class="btn-text">Mark Day Complete</span>
+          </button>
+          
+          <a id="modalWatchLink" href="#" target="_blank" class="btn btn-watch-link" style="display: none;">
+            <span class="btn-icon">▶</span>
+            <span class="btn-text">Watch Video Lesson</span>
+          </a>
+          
+          <div class="rating-picker">
+            <span class="rating-label">Confidence:</span>
+            <div class="stars-container" id="modalStars">
+              <span class="star-btn" data-rating="1">★</span>
+              <span class="star-btn" data-rating="2">★</span>
+              <span class="star-btn" data-rating="3">★</span>
+              <span class="star-btn" data-rating="4">★</span>
+              <span class="star-btn" data-rating="5">★</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Tabs Navigation -->
+      <nav class="modal-tabs">
+        <button class="tab-link active" data-tab="syllabus-tab">Syllabus Details</button>
+        <button class="tab-link" data-tab="template-tab">Video Plan (~30m)</button>
+        <button class="tab-link" data-tab="homework-tab">Homework & Notes</button>
+        <button class="tab-link" data-tab="speaking-tab" id="speakingTabNav">Speaking Lab</button>
+      </nav>
+
+      <!-- Modal Body Content -->
+      <div class="modal-body">
+        
+        <!-- Tab 1: Syllabus Checklist -->
+        <div class="tab-content active" id="syllabus-tab">
+          <h4 class="section-title">Day Subtopics Checklist</h4>
+          <p class="section-desc">Track your understanding of each topic covered in this video lesson. Check them off as you study.</p>
+          
+          <ul class="subtopics-checklist" id="modalSubtopicsList">
+            <!-- Dynamic subtopics checkboxes -->
+          </ul>
+        </div>
+
+        <!-- Tab 2: Video Template & Timestamps -->
+        <div class="tab-content" id="template-tab">
+          <h4 class="section-title" id="templateTitleText">Grammar Video Template Structure</h4>
+          <p class="section-desc">Use this recommended timing outline when recording or viewing the 30-minute lesson video.</p>
+          
+          <div class="video-timeline" id="videoTimeline">
+            <!-- Dynamic timeline depending on grammar vs speaking -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Homework Notebook -->
+        <div class="tab-content" id="homework-tab">
+          <div class="homework-header-section">
+            <h4 class="section-title">Homework Tasks</h4>
+            <div class="homework-exercises" id="modalHomeworkDescription">
+              <!-- Dynamic homework description -->
+            </div>
+          </div>
+          
+          <div class="notebook-area">
+            <h5 class="notebook-title">Your Homework Notebook</h5>
+            <p class="section-desc">Type your exercises, sentences, or translations here. They will auto-save to your local storage.</p>
+            <textarea id="homeworkTextarea" placeholder="Write down your answers, vocabulary list, or notes for this day..."></textarea>
+            <div class="notebook-footer">
+              <span id="notebookSaveStatus" class="save-status">Saved</span>
+              <button id="saveHomeworkBtn" class="btn btn-secondary btn-sm">Save Notes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Speaking Lab (Audio practice) -->
+        <div class="tab-content" id="speaking-tab">
+          <h4 class="section-title">Pronunciation & Auditory Feedback</h4>
+          <p class="section-desc">Practice makes perfect. Record your voice using the microphone, play it back, and review your pronunciation.</p>
+          
+          <div class="speaking-lab-card">
+            <!-- Audio controls -->
+            <div class="recorder-panel">
+              <div class="recording-state-indicator" id="recordingIndicator">
+                <span class="pulse-dot"></span>
+                <span id="recordingStatusText">Microphone Ready</span>
+              </div>
+              
+              <!-- Waveform Visualizer -->
+              <div class="visualizer-wrapper">
+                <canvas id="waveformCanvas" width="400" height="80"></canvas>
+                <div class="timer" id="recordingTimer">00:00</div>
+              </div>
+              
+              <div class="recorder-actions">
+                <button id="startRecordBtn" class="btn btn-danger">
+                  <span class="btn-icon">⏺</span> Record
+                </button>
+                <button id="stopRecordBtn" class="btn btn-secondary" disabled>
+                  <span class="btn-icon">⏹</span> Stop
+                </button>
+              </div>
+            </div>
+
+            <!-- Playlist of recordings -->
+            <div class="recordings-list-section">
+              <h5 class="list-title">Your Recording Attempts</h5>
+              <div class="recordings-playlist" id="recordingsPlaylist">
+                <p class="empty-playlist-text">No recordings saved for this day yet. Record one above to start practicing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load Data and Logic scripts -->
+  <script src="course-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
